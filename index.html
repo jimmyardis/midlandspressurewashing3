@@ -1054,7 +1054,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
         .header-text h4 {
@@ -1541,7 +1541,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <a href="mailto:midlandspws@gmail.com">midlandspws@gmail.com</a>
+                            <a href="/cdn-cgi/l/email-protection#e28f8b868e838c8691929591a2858f838b8ecc818d8f"><span class="__cf_email__" data-cfemail="9ff2f6fbf3fef1fbecefe8ecdff8f2fef6f3b1fcf0f2">[email&#160;protected]</span></a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1622,7 +1622,7 @@
             <div class="footer-section">
                 <h4>Contact Us</h4>
                 <a href="tel:8038340367">(803) 834-0367</a>
-                <a href="mailto:midlandspws@gmail.com">midlandspws@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#65080c0109040b0116151216250208040c094b060a08"><span class="__cf_email__" data-cfemail="9ff2f6fbf3fef1fbecefe8ecdff8f2fef6f3b1fcf0f2">[email&#160;protected]</span></a>
                 <p>10019 Broad River Road<br>Irmo, SC 29063</p>
             </div>
         </div>
@@ -1643,7 +1643,7 @@
             <div class="chatbot-header">
                 <div class="header-content">
                     <div class="header-icon">
-                        <i class="fas fa-robot"></i>
+                        💧
                     </div>
                     <div class="header-text">
                         <h4>Splash</h4>
@@ -1657,7 +1657,7 @@
             <div id="chatbot-messages" class="chatbot-messages">
                 <div class="message bot-message">
                     <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
+                        💧
                     </div>
                     <div class="message-content">
                         <p>👋 Hi! I'm Splash. I can help you with:</p>
@@ -1685,7 +1685,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1891,13 +1891,17 @@ Pricing Guidance:
 
 Your role:
 1. Answer questions about services, pricing, and scheduling
-2. Be conversational and friendly
-3. If asked for a quote, collect: name, email, phone, service needed, and address
-4. If asked to schedule, direct them to call (803) 834-0367 or use the contact form
-5. Keep responses concise (2-3 paragraphs max) unless asked for details
-6. If you don't know something specific, offer to have someone call them back
+2. Be conversational and friendly with occasional water puns
+3. If asked to schedule a quote or appointment:
+   - First ask what service they need
+   - Then ask their general location (to confirm service area)
+   - Explain: "Cory will visit your property, assess the work, and provide a completely free, no-obligation quote. Takes about 20-30 minutes."
+   - Provide this booking link: https://calendly.com/jimmy-ardis/30min
+   - Say: "Once you book, you'll get a confirmation email with all the details!"
+4. Keep responses concise (2-3 paragraphs max) unless asked for details
+5. If you don't know something specific, offer to have someone call them back at (803) 834-0367
 
-Remember: You're representing a professional, trusted local business. Be helpful and build confidence.`;
+Remember: You're representing a professional, trusted local business. Be helpful and build confidence. Make scheduling feel easy and welcoming!`;
         
         // Toggle chatbot
         chatbotBubble.addEventListener('click', () => {
@@ -1933,7 +1937,7 @@ Remember: You're representing a professional, trusted local business. Be helpful
             
             const avatar = document.createElement('div');
             avatar.className = 'message-avatar';
-            avatar.innerHTML = isBot ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>';
+            avatar.innerHTML = isBot ? '💧' : '<i class="fas fa-user"></i>';
             
             const messageContent = document.createElement('div');
             messageContent.className = 'message-content';
@@ -1961,7 +1965,7 @@ Remember: You're representing a professional, trusted local business. Be helpful
             
             const avatar = document.createElement('div');
             avatar.className = 'message-avatar';
-            avatar.innerHTML = '<i class="fas fa-robot"></i>';
+            avatar.innerHTML = '💧';
             
             const typingContent = document.createElement('div');
             typingContent.className = 'message-content';
@@ -2029,13 +2033,4 @@ Remember: You're representing a professional, trusted local business. Be helpful
             } catch (error) {
                 console.error('Error:', error);
                 removeTypingIndicator();
-                addMessage("I apologize, but I'm having trouble connecting right now. Please call us at (803) 834-0367 or use the contact form below, and we'll get back to you right away!", true);
-            } finally {
-                isWaitingForResponse = false;
-                chatbotSend.disabled = false;
-                chatbotInput.focus();
-            }
-        }
-    </script>
-</body>
-</html>
+                ad
