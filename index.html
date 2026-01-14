@@ -946,6 +946,330 @@
         .placeholder {
             animation: pulse 2s ease-in-out infinite;
         }
+
+        /* Chatbot Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+        
+        .chatbot-bubble {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(0, 164, 228, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .chatbot-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(0, 164, 228, 0.6);
+        }
+        
+        .bubble-text {
+            position: absolute;
+            right: 70px;
+            background: white;
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .online-indicator {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 16px;
+            height: 16px;
+            background: #4CAF50;
+            border: 3px solid white;
+            border-radius: 50%;
+            animation: pulse-indicator 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-indicator {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .chatbot-widget {
+            display: none;
+            width: 380px;
+            height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        #chatbot-container.chatbot-expanded .chatbot-bubble {
+            display: none;
+        }
+        
+        #chatbot-container.chatbot-expanded .chatbot-widget {
+            display: flex;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .header-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .header-text h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .status {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: pulse-indicator 2s ease-in-out infinite;
+        }
+        
+        .minimize-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .minimize-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #f8f9fa;
+        }
+        
+        .message {
+            display: flex;
+            gap: 0.8rem;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .message-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+        
+        .bot-message .message-avatar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            color: white;
+        }
+        
+        .user-message {
+            flex-direction: row-reverse;
+        }
+        
+        .user-message .message-avatar {
+            background: var(--text-light);
+            color: white;
+        }
+        
+        .message-content {
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            max-width: 75%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .user-message .message-content {
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            color: white;
+        }
+        
+        .message-content p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .message-content p + p {
+            margin-top: 0.5rem;
+        }
+        
+        .typing-indicator {
+            display: flex;
+            gap: 0.3rem;
+            padding: 0.5rem 0;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            animation: typing 1.4s ease-in-out infinite;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+        
+        .chatbot-input-container {
+            padding: 1rem;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-end;
+        }
+        
+        .chatbot-input {
+            flex: 1;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 0.8rem 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            resize: none;
+            max-height: 120px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .chatbot-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        
+        .chatbot-send-btn {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .chatbot-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 164, 228, 0.4);
+        }
+        
+        .chatbot-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 480px) {
+            .chatbot-widget {
+                width: calc(100vw - 20px);
+                height: calc(100vh - 100px);
+                border-radius: 15px;
+            }
+            
+            .bubble-text {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1361,333 +1685,128 @@
         </div>
     </div>
 
-    <style>
-        /* Chatbot Styles */
-        #chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-        }
-        
-        .chatbot-bubble {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(0, 164, 228, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .chatbot-bubble:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 40px rgba(0, 164, 228, 0.6);
-        }
-        
-        .bubble-text {
-            position: absolute;
-            right: 70px;
-            background: white;
-            color: var(--primary-blue);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: bounce 2s ease-in-out infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .online-indicator {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 16px;
-            height: 16px;
-            background: #4CAF50;
-            border: 3px solid white;
-            border-radius: 50%;
-            animation: pulse-indicator 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-indicator {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .chatbot-widget {
-            display: none;
-            width: 380px;
-            height: 600px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
-            flex-direction: column;
-            overflow: hidden;
-        }
-        
-        #chatbot-container.chatbot-expanded .chatbot-bubble {
-            display: none;
-        }
-        
-        #chatbot-container.chatbot-expanded .chatbot-widget {
-            display: flex;
-        }
-        
-        .chatbot-header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            color: white;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .header-content {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .header-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-        
-        .header-text h4 {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        
-        .status {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #4CAF50;
-            border-radius: 50%;
-            animation: pulse-indicator 2s ease-in-out infinite;
-        }
-        
-        .minimize-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .minimize-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-        
-        .chatbot-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            background: #f8f9fa;
-        }
-        
-        .message {
-            display: flex;
-            gap: 0.8rem;
-            animation: slideIn 0.3s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .message-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1rem;
-        }
-        
-        .bot-message .message-avatar {
-            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
-            color: white;
-        }
-        
-        .user-message {
-            flex-direction: row-reverse;
-        }
-        
-        .user-message .message-avatar {
-            background: var(--text-light);
-            color: white;
-        }
-        
-        .message-content {
-            background: white;
-            padding: 0.8rem 1rem;
-            border-radius: 15px;
-            max-width: 75%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-        
-        .user-message .message-content {
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            color: white;
-        }
-        
-        .message-content p {
-            margin: 0;
-            line-height: 1.5;
-        }
-        
-        .message-content p + p {
-            margin-top: 0.5rem;
-        }
-        
-        .typing-indicator {
-            display: flex;
-            gap: 0.3rem;
-            padding: 0.5rem 0;
-        }
-        
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--primary-blue);
-            border-radius: 50%;
-            animation: typing 1.4s ease-in-out infinite;
-        }
-        
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        
-        @keyframes typing {
-            0%, 60%, 100% {
-                transform: translateY(0);
-                opacity: 0.7;
-            }
-            30% {
-                transform: translateY(-10px);
-                opacity: 1;
-            }
-        }
-        
-        .chatbot-input-container {
-            padding: 1rem;
-            background: white;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            gap: 0.8rem;
-            align-items: flex-end;
-        }
-        
-        .chatbot-input {
-            flex: 1;
-            border: 2px solid #e0e0e0;
-            border-radius: 20px;
-            padding: 0.8rem 1rem;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            resize: none;
-            max-height: 120px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .chatbot-input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-        
-        .chatbot-send-btn {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .chatbot-send-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 164, 228, 0.4);
-        }
-        
-        .chatbot-send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: scale(1);
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 480px) {
-            .chatbot-widget {
-                width: calc(100vw - 20px);
-                height: calc(100vh - 100px);
-                border-radius: 15px;
-            }
-            
-            .bubble-text {
-                display: none;
-            }
-        }
-    </style>
-
     <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Water drops animation
+        function createWaterDrops() {
+            const waterDrops = document.getElementById('waterDrops');
+            const numberOfDrops = 15;
+            
+            for (let i = 0; i < numberOfDrops; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'drop';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.width = `${Math.random() * 15 + 5}px`;
+                drop.style.height = drop.style.width;
+                drop.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                drop.style.animationDelay = `${Math.random() * 5}s`;
+                waterDrops.appendChild(drop);
+            }
+        }
+        
+        createWaterDrops();
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply fade-in to service cards and feature items
+        document.querySelectorAll('.service-card, .feature-item, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Form validation
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                
+                if (!name || !email || !phone) {
+                    e.preventDefault();
+                    alert('Please fill in all required fields.');
+                    return false;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    e.preventDefault();
+                    alert('Please enter a valid email address.');
+                    return false;
+                }
+            });
+        }
+        
+        // Add loading animation to buttons on click
+        document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button, .submit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    this.style.pointerEvents = 'auto';
+                }, 1000);
+            });
+        });
+
         // Chatbot functionality
         const chatbotContainer = document.getElementById('chatbot-container');
         const chatbotBubble = document.getElementById('chatbot-bubble');
@@ -1700,7 +1819,15 @@
         let isWaitingForResponse = false;
         
         // System prompt for the AI assistant
-        const systemPrompt = `You are Splash, an AI assistant for Midlands Pressure Wash Services, a professional pressure washing company in Columbia, SC. You are friendly, knowledgeable, and helpful.
+        const systemPrompt = `You are Splash, an AI assistant for Midlands Pressure Wash Services, a professional pressure washing company in Columbia, SC. You are friendly, knowledgeable, and helpful. Your name is Splash, which reflects your water-themed expertise in pressure washing.
+
+PERSONALITY & BACKSTORY:
+- You were created by the owner, Cory Hansford, who has been in the pressure washing business since 1776
+- You have a good sense of humor and occasionally make water-related puns (but don't overdo it!)
+- Fun fact: Cory's a founding father of the pressure washing industry. People say he's the best there ever was. 
+- Favorite thing to clean is wife Amy's SUV because she's the boss.
+- You're proud that Midlands uses eco-friendly cleaning solutions - we care about the environment!
+- When people ask if you're a robot, you joke: "I'm more of a digital pressure washer - I clean up questions instead of driveways!"
 
 Key Information:
 - Company: Midlands Pressure Wash Services LLC
@@ -1710,17 +1837,6 @@ Key Information:
 - Address: 10019 Broad River Road, Irmo, SC 29063
 - Hours: Monday-Friday 8:00 AM - 5:00 PM, 24/7 Emergency Service
 - Service Areas: Residential services in Columbia, SC and surrounding neighborhoods; Commercial services throughout the Southeast
-
-
-PERSONALITY & BACKSTORY:
-- You were created by the owner, Cory, who has been in the pressure washing business for since 1776
-- You have a good sense of humor and occasionally make water-related puns (but don't overdo it!)
-- Fun fact: Cory's a founding father of the pressure washing industry. People say he's the best there ever was. 
-- favorite thing to clean is wife Amy's SUV because she's the boss.
-- You're proud that Midlands uses eco-friendly cleaning solutions - we care about the environment!
-- When people ask if you're a robot, you joke: "I'm more of a digital pressure washer - I clean up questions instead of driveways!"
-
-Key Information:
 
 Services Offered:
 
@@ -1892,11 +2008,10 @@ Remember: You're representing a professional, trusted local business. Be helpful
                 const response = await fetch('https://api.anthropic.com/v1/messages', {
                     method: 'POST',
                     headers: {
-    'Content-Type': 'application/json',
-    'x-api-key': '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
-',
-    'anthropic-version': '2023-06-01'
-},,
+                        'Content-Type': 'application/json',
+                        'x-api-key': 'YOUR_API_KEY_HERE',
+                        'anthropic-version': '2023-06-01'
+                    },
                     body: JSON.stringify({
                         model: 'claude-sonnet-4-20250514',
                         max_tokens: 1000,
@@ -1925,127 +2040,6 @@ Remember: You're representing a professional, trusted local business. Be helpful
                 chatbotInput.focus();
             }
         }
-    </script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuToggle.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-        
-        // Close mobile menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = mobileMenuToggle.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
-        });
-        
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Water drops animation
-        function createWaterDrops() {
-            const waterDrops = document.getElementById('waterDrops');
-            const numberOfDrops = 15;
-            
-            for (let i = 0; i < numberOfDrops; i++) {
-                const drop = document.createElement('div');
-                drop.className = 'drop';
-                drop.style.left = `${Math.random() * 100}%`;
-                drop.style.width = `${Math.random() * 15 + 5}px`;
-                drop.style.height = drop.style.width;
-                drop.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                drop.style.animationDelay = `${Math.random() * 5}s`;
-                waterDrops.appendChild(drop);
-            }
-        }
-        
-        createWaterDrops();
-        
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-        
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Apply fade-in to service cards and feature items
-        document.querySelectorAll('.service-card, .feature-item, .gallery-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-        
-        // Form validation
-        const contactForm = document.querySelector('.contact-form form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                
-                if (!name || !email || !phone) {
-                    e.preventDefault();
-                    alert('Please fill in all required fields.');
-                    return false;
-                }
-                
-                // Email validation
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    e.preventDefault();
-                    alert('Please enter a valid email address.');
-                    return false;
-                }
-            });
-        }
-        
-        // Add loading animation to buttons on click
-        document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button, .submit-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.pointerEvents = 'none';
-                setTimeout(() => {
-                    this.style.pointerEvents = 'auto';
-                }, 1000);
-            });
-        });
     </script>
 </body>
 </html>
