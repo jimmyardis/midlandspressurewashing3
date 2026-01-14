@@ -1,0 +1,11 @@
+{
+  "name": "midlands-pressure-wash",
+  "version": "1.0.0",
+  "description": "AI-powered website for Midlands Pressure Wash Services featuring Splash, the intelligent chatbot assistant",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev"
+  },
+  "author": "Carolina Redesign",
+  "license": "MIT"
+}
